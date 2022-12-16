@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="WidgetContainer">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="Widget" name="Widgets" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Widget">
+        <xs:complexContent>
+            <xs:extension base="BaseType">
+                <xs:attribute type="WidgetId" name="Id" use="required"/>
+                <xs:attribute type="xs:string" name="Name" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:simpleType name="Status">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FOO"/>
+            <xs:enumeration value="BAR"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="BaseType" abstract="true">
+        <xs:attribute type="Status" name="Status"/>
+    </xs:complexType>
+
+    <xs:simpleType name="WidgetId">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="254"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="WidgetType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TYPE_A"/>
+            <xs:enumeration value="TYPE_B"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
