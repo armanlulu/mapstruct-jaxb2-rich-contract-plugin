@@ -31,7 +31,7 @@ public class MappersTest {
         // When
         WidgetContainer mapped = mapper.toContainer(source);
 
-        // When
+        // Then
         assertWidgets(mapped.getWidgets(), source.getWidgets());
     }
 
